@@ -16,4 +16,21 @@ class Question < ActiveRecord::Base
     primary_key: :id
   )
   
+  has_many(
+    :responses,
+    through: :answer_choices,
+    source: :responses
+  )
+  
+  def results
+    result = Hash.new(0)
+    answer_choices = self.answer_choices.includes(:responses)
+   
+    answer_choices.each do |an_c|
+      result[an_c.text] = an_c.responses.length
+    end
+    
+    result
+  end
+  
 end
