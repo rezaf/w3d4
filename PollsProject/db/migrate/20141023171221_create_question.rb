@@ -1,8 +1,8 @@
 class CreateQuestion < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :text, presence: :true
-      t.integer :poll_id, presence: :true    
+      t.string :text, null: false
+      t.integer :poll_id, null: false
       
       t.timestamps
     end

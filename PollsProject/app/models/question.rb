@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   
-  validates :text, :poll_id, presence: :true
+  validates :text, :poll_id, presence: true
   
   belongs_to(
     :poll,
